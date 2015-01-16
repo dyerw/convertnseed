@@ -1,6 +1,7 @@
 #!/bin/bash
 
 flac_folder=$1
+tracker_url=$2
 
 # Make folders for mp3 formats
 m320_folder=${flac_folder//"FLAC"/"320"} 
@@ -41,7 +42,7 @@ done
 IFS=$SAVEIFS
 
 # Create all the torrent files
-sudo transmission-create -p -t http://tracker.what.cd:34000/x23xi3zsdozkjnjb4vhqck34ix789hvu/announce -o "$(basename "${flac_folder}").torrent" "${flac_folder}"
-sudo transmission-create -p -t http://tracker.what.cd:34000/x23xi3zsdozkjnjb4vhqck34ix789hvu/announce -o "$(basename "${m320_folder}").torrent" "${m320_folder}"
-sudo transmission-create -p -t http://tracker.what.cd:34000/x23xi3zsdozkjnjb4vhqck34ix789hvu/announce -o "$(basename "${v0_folder}").torrent" "${v0_folder}"
-sudo transmission-create -p -t http://tracker.what.cd:34000/x23xi3zsdozkjnjb4vhqck34ix789hvu/announce -o "$(basename "${v2_folder}").torrent" "${v2_folder}"
+sudo transmission-create -p -t ${tracker_url} -o "$(basename "${flac_folder}").torrent" "${flac_folder}"
+sudo transmission-create -p -t ${tracker_url} -o "$(basename "${m320_folder}").torrent" "${m320_folder}"
+sudo transmission-create -p -t ${tracker_url} -o "$(basename "${v0_folder}").torrent" "${v0_folder}"
+sudo transmission-create -p -t ${tracker_url} -o "$(basename "${v2_folder}").torrent" "${v2_folder}"
